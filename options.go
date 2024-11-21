@@ -1,6 +1,7 @@
 package pushnotifications
 
 import (
+	"net/http"
 	"time"
 )
 
@@ -15,5 +16,11 @@ func WithRequestTimeout(timeout time.Duration) Option {
 func WithCustomBaseURL(url string) Option {
 	return func(pn *pushNotifications) {
 		pn.baseEndpoint = url
+	}
+}
+
+func WithHTTPClient(httpClient *http.Client) Option {
+	return func(pn *pushNotifications) {
+		pn.httpClient = httpClient
 	}
 }
